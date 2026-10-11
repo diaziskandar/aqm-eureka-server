@@ -1,0 +1,14 @@
+services:
+  # 1. Eureka Server
+  eureka-server:
+    build: .
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - erp-net
+
+networks:
+  erp-net:
+    external: true
+    name: erp-net

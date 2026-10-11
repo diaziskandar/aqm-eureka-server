@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: eureka-server # Diubah dari localhost mengikuti nama container di docker-compose
+  client:
+    register-with-eureka: false # Jangan mendaftar ke diri sendiri
+    fetch-registry: false       # Tidak perlu mengambil data registry dari server lain
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+  server:
+    enable-self-preservation: false 
+    eviction-interval-timer-in-ms: 10000
